@@ -2,9 +2,12 @@ package sm.animation
 
 import android.animation.Animator
 import android.animation.AnimatorInflater
+import android.graphics.Matrix
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
