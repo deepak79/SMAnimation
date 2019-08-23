@@ -16,7 +16,7 @@
             android:layout_marginTop="?attr/actionBarSize"
             android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <sm.animation.adapter.InfiniteRotationView
                 android:id="@+id/rv_boxes"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -43,12 +43,45 @@
             <LinearLayout
                     android:layout_gravity="center"
                     android:orientation="vertical"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                 <TextView
                         android:text="MEN\'S SHOE"
-                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/darker_gray"
+                        android:gravity="center"
+                        android:layout_marginTop="120dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:text="Nike Air Max"
+                        android:textSize="18sp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:text="270"
+                        android:textSize="17sp"
+                        android:layout_marginTop="6dp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:text="$150"
+                        android:textSize="25sp"
+                        android:layout_marginTop="15dp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -102,6 +135,7 @@
         </LinearLayout>
 
         <LinearLayout
+                android:id="@+id/cart"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/circlebag"

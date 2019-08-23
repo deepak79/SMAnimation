@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+              xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:minHeight="?attr/actionBarSize"
@@ -15,20 +17,32 @@
             android:background="#dcdcdc"
             tools:ignore="RtlSymmetry">
 
-
-        <ImageView
-                android:id="@+id/backIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/backarrow"/>
-
-        <ImageView
-                android:id="@+id/txt_driver_title"
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:src="@drawable/nike"
-        />
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:id="@+id/backIcon"
+                    android:layout_width="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="20dp"
+                    android:src="@drawable/backarrow"/>
+
+            <ImageView
+                    android:id="@+id/txt_driver_title"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="center"
+                    android:src="@drawable/nike"
+                    />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.appcompat.widget.Toolbar>
 
