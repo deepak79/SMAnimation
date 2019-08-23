@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:minHeight="?attr/actionBarSize"
+              android:background="#dcdcdc"
+              android:gravity="center">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:elevation="12dp"
+            android:background="#dcdcdc"
+            tools:ignore="RtlSymmetry">
+
+
+        <ImageView
+                android:id="@+id/backIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/backarrow"/>
+
+        <ImageView
+                android:id="@+id/txt_driver_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:src="@drawable/nike"
+        />
+
+    </androidx.appcompat.widget.Toolbar>
+
+</LinearLayout>

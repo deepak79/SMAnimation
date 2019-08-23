@@ -5,36 +5,114 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#dcdcdc"
         tools:context=".MainActivity">
 
+    <include
+            layout="@layout/toolbar"/>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="50dp">
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_height="match_parent">
 
-        <ImageView
-                android:id="@+id/flipLayoutBack"
-                android:layout_width="160dp"
-                android:layout_marginTop="50dp"
-                android:layout_gravity="center"
-                android:background="@drawable/back"
-                android:layout_height="150dp"/>
-        <ImageView
-                android:id="@+id/flipLayout"
-                android:layout_width="180dp"
-                android:layout_gravity="center"
-                android:background="@drawable/solid"
-                android:layout_height="150dp"/>
-    </FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_boxes"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="#dcdcdc"/>
 
-    <Button
-            android:id="@+id/btnFlip"
-            android:text="Flip"
-            android:layout_width="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_height="50dp"/>
+        <LinearLayout
+                android:background="@drawable/grad"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/rv_boxes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="50dp"
+                >
+
+            <LinearLayout
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <TextView
+                        android:text="MEN\'S SHOE"
+                        android:textColor="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <FrameLayout
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                <FrameLayout
+                        android:layout_width="50dp"
+                        android:layout_margin="20dp"
+                        android:layout_gravity="bottom|left"
+                        android:layout_height="50dp">
+
+                    <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/circle">
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/circleblack"
+                            android:layout_marginBottom="20dp"
+                            android:layout_gravity="top|right">
+                    </LinearLayout>
+
+                    <TextView
+                            android:layout_gravity="center"
+                            android:text="5.1"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </FrameLayout>
+
+                <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_gravity="bottom|right"
+                        android:layout_margin="20dp"
+                        android:gravity="center"
+                        android:layout_height="50dp"
+                        android:background="@drawable/circleheart">
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/circlebag"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="bottom|center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent">
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

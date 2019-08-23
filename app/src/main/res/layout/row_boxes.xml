@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="250dp"
+        android:gravity="center"
+        android:layout_height="250dp">
+
+    <ImageView
+            android:id="@+id/flipLayoutBack"
+            android:layout_width="180dp"
+            android:elevation="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/box"
+            android:layout_height="150dp"/>
+    <ImageView
+            android:id="@+id/shoe"
+            android:layout_width="130dp"
+            android:elevation="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shoes"
+            android:layout_height="130dp"/>
+    <ImageView
+            android:id="@+id/flipLayout"
+            android:layout_width="180dp"
+            android:elevation="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/boxtop"
+            android:layout_height="150dp"/>
+
+</FrameLayout>
