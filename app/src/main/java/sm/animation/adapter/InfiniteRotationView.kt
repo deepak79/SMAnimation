@@ -1,14 +1,13 @@
 package sm.animation.adapter
 
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout.HORIZONTAL
 import android.widget.RelativeLayout
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -20,13 +19,14 @@ import io.reactivex.disposables.Disposable
 import sm.animation.R
 import java.util.concurrent.TimeUnit
 
+
 class InfiniteRotationView(context: Context, attributeSet: AttributeSet) : RelativeLayout(context, attributeSet) {
 
     @BindView(R.id.box_recyclerview)
     internal lateinit var recyclerView: RecyclerView
-    val translateAnimator = ValueAnimator.ofFloat(0.0f, 1.0f)
     private val layoutManager: LinearLayoutManager
     private lateinit var onScrollListener: OnScrollListener
+    var currentPosition = MutableLiveData<Int>()
 
     private var dispose: Disposable? = null
 
@@ -34,7 +34,11 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet) : Relat
         View.inflate(context, R.layout.view_infinite_rotation, this)
         ButterKnife.bind(this)
         layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-       }
+    }
+
+    fun getCurrentValue(): LiveData<Int> {
+        return currentPosition
+    }
 
     fun setAdapter(adapter: BoxAdapter) {
         recyclerView.layoutManager = layoutManager
@@ -66,16 +70,7 @@ class InfiniteRotationView(context: Context, attributeSet: AttributeSet) : Relat
             .map { it % listSize + 1 }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                val view =recyclerView.layoutManager?.findViewByPosition(it.toInt())
-                val rotateAnimator = ObjectAnimator.ofFloat(view, "rotationX", 0f, 140f)
-                val animatorSet = AnimatorSet()
-                animatorSet.playTogether(translateAnimator, rotateAnimator)
-                animatorSet.duration = 2000
-                val y = view!!.y
-                translateAnimator.addUpdateListener {
-                    val t = translateAnimator.animatedValue as Float
-                    view!!.translationY = -(y + t * 300)
-                }
+                currentPosition.postValue(it.toInt() + 1)
                 recyclerView.smoothScrollToPosition(it.toInt() + 1)
             }
     }

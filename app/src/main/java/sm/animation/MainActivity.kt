@@ -1,58 +1,53 @@
 package sm.animation
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.os.Bundle
+import android.os.Handler
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.Observer
 import butterknife.BindView
 import butterknife.ButterKnife
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import sm.animation.adapter.BoxAdapter
-import sm.animation.adapter.CenterLayoutManager
 import sm.animation.adapter.InfiniteRotationView
 import sm.animation.model.Boxes
 
 
 class MainActivity : AppCompatActivity() {
-//    var isFlipped = false
-//    val translateAnimator = ValueAnimator.ofFloat(0.0f, 1.0f)
-//    lateinit var adapter: BoxAdapter
-//    lateinit var lm: CenterLayoutManager
-
+    val translateAnimator = ValueAnimator.ofFloat(0.0f, 1.0f)
     @BindView(R.id.rv_boxes)
     internal lateinit var rotationView: InfiniteRotationView
-
+    lateinit var handler: Handler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
         setSupportActionBar(toolbar)
-
-//        lm = CenterLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-//        adapter = BoxAdapter(getDummyData())
-//        rv_boxes.layoutManager = lm
-//        rv_boxes.adapter = adapter
-//        val rotateAnimator = ObjectAnimator.ofFloat(flipLayout, "rotationX", 0f, 140f)
-//
-//        val animatorSet = AnimatorSet()
-//        animatorSet.playTogether(translateAnimator, rotateAnimator)
-//        animatorSet.duration = 2000
-//
-//        val y = flipLayout.y
-//        translateAnimator.addUpdateListener {
-//            val t = translateAnimator.animatedValue as Float
-//            flipLayout.translationY = -(y + t * 300)
-//            flipLayout.setImageDrawable(ContextCompat.getDrawable(applicationContext,R.drawable.front))
-//        }
-//        cart.setOnClickListener {
-//            lm.smoothScrollToPosition(rv_boxes, RecyclerView.State(), 2)
-//        }
+        handler = Handler()
         val items = getDummyData()
         rotationView.setAdapter(BoxAdapter(items))
-        rotationView.autoScroll(items.size, 2000)
+        rotationView.autoScroll(items.size, 3000)
+        rotationView.getCurrentValue().observe(this, Observer {
+            val vh = rotationView.recyclerView.findViewHolderForAdapterPosition(it)
+            if (vh != null) {
+                val view = (vh as BoxAdapter.BoxViewHolder).flipLayout
+                val rotate = ObjectAnimator.ofFloat(view,"rotationX",0f,130f)
+                rotate.repeatMode = ValueAnimator.REVERSE
+                rotate.repeatCount = 1
+                val translate = ObjectAnimator.ofFloat(view,"translationY",view.x-100f,-(view.x+180f))
+                translate.repeatMode = ValueAnimator.REVERSE
+                translate.repeatCount = 1
+                val animatorSet = AnimatorSet()
+                animatorSet.playTogether(rotate, translate)
+                animatorSet.duration = 2300
+                animatorSet.start()
+            }
+        })
     }
+
     override fun onDestroy() {
         super.onDestroy()
         rotationView.stopAutoScroll()
@@ -60,7 +55,6 @@ class MainActivity : AppCompatActivity() {
 
     fun getDummyData(): List<Boxes> {
         val list = mutableListOf<Boxes>()
-
         list.add(
             Boxes(
                 "", "MENS SHOE", "nike air max", "270",
@@ -68,16 +62,19 @@ class MainActivity : AppCompatActivity() {
             )
         )
         list.add(
-            Boxes(
-                "", "MENS SHOE", "nike air max", "270",
-                "$150", "4.5"
-            )
+            list[0]
         )
         list.add(
-            Boxes(
-                "", "MENS SHOE", "nike air max", "270",
-                "$150", "4.5"
-            )
+            list[0]
+        )
+        list.add(
+            list[0]
+        )
+        list.add(
+            list[0]
+        )
+        list.add(
+            list[0]
         )
         return list
     }
