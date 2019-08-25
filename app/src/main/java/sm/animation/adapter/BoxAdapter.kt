@@ -16,7 +16,6 @@ class BoxAdapter(itemList: List<Boxes>) : RecyclerView.Adapter<BoxAdapter.BoxVie
     private val list: List<Boxes> = listOf(itemList.last()) + itemList + listOf(itemList.first())
 
     override fun onBindViewHolder(holder: BoxViewHolder, position: Int) {
-        holder.setIsRecyclable(false)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoxViewHolder {
@@ -29,8 +28,10 @@ class BoxAdapter(itemList: List<Boxes>) : RecyclerView.Adapter<BoxAdapter.BoxVie
     override fun getItemCount() = list.size
 
     class BoxViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        @BindView(R.id.flipLayout)
-        lateinit var flipLayout: ImageView
+        @BindView(R.id.img_shoe_top)
+        lateinit var img_shoe_top: ImageView
+        @BindView(R.id.img_shoe)
+        lateinit var img_shoe: ImageView
 
         init {
             ButterKnife.bind(this, view)
@@ -39,6 +40,6 @@ class BoxAdapter(itemList: List<Boxes>) : RecyclerView.Adapter<BoxAdapter.BoxVie
 
     override fun onViewDetachedFromWindow(holder: BoxViewHolder) {
         super.onViewDetachedFromWindow(holder)
-        holder.flipLayout.clearAnimation()
+        holder.img_shoe_top.clearAnimation()
     }
 }

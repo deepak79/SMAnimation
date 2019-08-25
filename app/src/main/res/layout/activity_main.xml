@@ -5,8 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#dcdcdc"
-        tools:context=".MainActivity">
+        android:background="@color/gray"
+        tools:context=".activity.MainActivity">
 
     <include
             layout="@layout/toolbar"/>
@@ -16,24 +16,24 @@
             android:layout_marginTop="?attr/actionBarSize"
             android:layout_height="match_parent">
 
-        <sm.animation.adapter.InfiniteRotationView
-                android:id="@+id/rv_boxes"
+        <sm.animation.customviews.CustomRecyclerView
+                android:id="@+id/custom_rv"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="#dcdcdc"/>
+                android:background="@color/gray"/>
 
         <LinearLayout
-                android:background="@drawable/grad"
+                android:background="@drawable/gray_gradient"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:gravity="bottom"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/rv_boxes"
+                app:layout_constraintTop_toBottomOf="@id/custom_rv"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +48,7 @@
                     android:layout_height="match_parent">
 
                 <TextView
+                        android:id="@+id/tv_shoe_type"
                         android:text="MEN\'S SHOE"
                         android:textSize="16sp"
                         android:textColor="@android:color/darker_gray"
@@ -57,6 +58,7 @@
                         android:layout_height="wrap_content"/>
 
                 <TextView
+                        android:id="@+id/tv_shoe_name"
                         android:text="Nike Air Max"
                         android:textSize="18sp"
                         android:layout_marginTop="10dp"
@@ -67,6 +69,7 @@
                         android:layout_height="wrap_content"/>
 
                 <TextView
+                        android:id="@+id/tv_shoe_subtitle"
                         android:text="270"
                         android:textSize="17sp"
                         android:layout_marginTop="6dp"
@@ -77,6 +80,7 @@
                         android:layout_height="wrap_content"/>
 
                 <TextView
+                        android:id="@+id/tv_shoe_price"
                         android:text="$150"
                         android:textSize="25sp"
                         android:layout_marginTop="15dp"
@@ -101,18 +105,19 @@
                     <LinearLayout
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:background="@drawable/circle">
+                            android:background="@drawable/ic_circle">
                     </LinearLayout>
 
                     <LinearLayout
                             android:layout_width="15dp"
                             android:layout_height="15dp"
-                            android:background="@drawable/circleblack"
+                            android:background="@drawable/ic_circleblack"
                             android:layout_marginBottom="20dp"
                             android:layout_gravity="top|right">
                     </LinearLayout>
 
                     <TextView
+                            android:id="@+id/tv_shoe_rating"
                             android:layout_gravity="center"
                             android:text="5.1"
                             android:textSize="16sp"
@@ -127,7 +132,7 @@
                         android:layout_margin="20dp"
                         android:gravity="center"
                         android:layout_height="50dp"
-                        android:background="@drawable/circleheart">
+                        android:background="@drawable/ic_circleheart">
                 </LinearLayout>
 
 
@@ -137,10 +142,10 @@
 
         <LinearLayout
                 android:id="@+id/cart"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:orientation="vertical"
-                android:background="@drawable/circlebag"
+                android:background="@drawable/ic_circlebag"
                 android:layout_marginBottom="20dp"
                 android:layout_gravity="bottom|center"
                 app:layout_constraintStart_toStartOf="parent"

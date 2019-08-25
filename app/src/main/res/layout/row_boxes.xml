@@ -7,25 +7,25 @@
         android:layout_height="250dp">
 
     <ImageView
-            android:id="@+id/flipLayoutBack"
             android:layout_width="180dp"
             android:elevation="10dp"
             android:layout_gravity="center"
-            android:background="@drawable/box"
+            android:background="@drawable/ic_box"
             android:layout_height="150dp"/>
+
     <ImageView
-            android:id="@+id/shoe"
+            android:id="@+id/img_shoe"
             android:layout_width="130dp"
             android:elevation="10dp"
             android:layout_gravity="center"
-            android:background="@drawable/shoes"
             android:layout_height="130dp"/>
+
     <ImageView
-            android:id="@+id/flipLayout"
+            android:id="@+id/img_shoe_top"
             android:layout_width="180dp"
             android:elevation="10dp"
             android:layout_gravity="center"
-            android:background="@drawable/boxtop"
+            android:background="@drawable/ic_boxtop"
             android:layout_height="150dp"/>
 
 </FrameLayout>

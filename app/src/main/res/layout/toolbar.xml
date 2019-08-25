@@ -6,7 +6,7 @@
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:minHeight="?attr/actionBarSize"
-              android:background="#dcdcdc"
+              android:background="@color/gray"
               android:gravity="center">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
             android:elevation="12dp"
-            android:background="#dcdcdc"
+            android:background="@color/gray"
             tools:ignore="RtlSymmetry">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +28,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_height="20dp"
-                    android:src="@drawable/backarrow"/>
+                    android:src="@drawable/ic_backarrow"/>
 
             <ImageView
                     android:id="@+id/txt_driver_title"
@@ -39,7 +39,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="center"
-                    android:src="@drawable/nike"
+                    android:src="@drawable/ic_nike_logo"
                     />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
